@@ -1,25 +1,67 @@
-const calculateTemp = () => {
-    const inputTemp = document.getElementById('temp').value;
+$(document).ready(function(){
+    $(window).scroll(function(){
+        if(this.scrollY > 20){
+            $('.navbar').addClass("sticky");
 
-    const tempSelected = document.getElementById('temp_diff');
-    const valueTemp = temp_diff.options[tempSelected.selectedIndex].value;
+        }else{
+            $('.navbar').removeClass("sticky");
+        }
+        if(this.scrollY > 500){
+            $('.scroll-up-btn').addClass("show")
+        }else{
+            $('.scroll-up-btn').removeClass("show");
+        }
+    });
 
-    // Celsius to Fahrenheit
-    const celToFah = (cel) => {
-        let fahrenheit = ((cel * 9 / 5) + 32).toFixed(1);
-        return fahrenheit;
-    }
 
-    // Fahrenheit to Celsius
-    const fahToCel = (fah) => {
-        let celsius = ((fah - 32) * 5 / 9).toFixed(1);
-        return celsius;
-    }
+    //Slide up script
+    $('.scroll-up-btn').click(function(){
+        $('html').animate({scrollTop: 0});
+    });
 
-    if (valueTemp == 'cel') {
-        document.getElementById("result").innerHTML = celToFah(inputTemp) + "&#176; Fahrenheit";
-    }
-    else {
-        document.getElementById("result").innerHTML = fahToCel(inputTemp) + "&#176; Celsius";
-    }
-}
+
+    //typing animation
+    var typed = new Typed(".typing", {
+        strings: ["Student", "Developer", "Designer"],
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true
+    });
+
+
+    var typed = new Typed(".typing2", {
+        strings: ["Student", "Developer", "Designer"],
+        typeSpeed: 100,
+        backSpeed: 60,
+        loop: true
+    });
+
+
+    //toggle menu
+    $('.menu-btn').click(function(){
+        $('.navbar .menu').toggleClass("active");
+        $('.menu-btn i').toggleClass("active");
+    });
+
+    //owl carousel Script
+    $('.carousel').owlCarousel({
+        margin: 20,
+        loop: true,
+        autoplayTimeOut: 2000,
+        autoplayHoverPause: true,
+        responsive: {
+            0:{
+                items: 1,
+                nav: false
+            },
+            600:{
+                items: 2,
+                nav: false
+            },
+            1000:{
+                items: 3,
+                nav: false
+            }
+        }
+    });
+})
